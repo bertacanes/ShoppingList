@@ -39,7 +39,7 @@ public class ShoppingListActivity extends AppCompatActivity {
         itemList.add("Carrots");
         itemList.add("Chocolate");
 
-        adapter = new ArrayAdapter<String>(
+        adapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
                 itemList
@@ -74,10 +74,8 @@ public class ShoppingListActivity extends AppCompatActivity {
     private void maybeRemoveItem(final int pos) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.confirm);
-        builder.setMessage(String.format(
-                "Are you sure you want to remove '%s'?",
-                itemList.get(pos)
-        ));
+        String fmt = getResources().getString(R.string.confirm_message);
+        builder.setMessage(String.format(fmt, itemList.get(pos)));
         builder.setPositiveButton(R.string.remove, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
