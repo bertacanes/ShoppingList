@@ -2,6 +2,7 @@ package edu.upc.eseiaat.pma.shoppinglistapplication;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,7 +40,20 @@ public class ShoppingListActivity extends AppCompatActivity {
                 itemList
         );
 
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addItem();
+            }
+        });
+
         list.setAdapter(adapter);
 
+    }
+
+    private void addItem(){
+        String item_text = edit_item.getText().toString();
+        itemList.add(item_text);
+        adapter.notifyDataSetChanged();
     }
 }
