@@ -41,7 +41,7 @@ public class ShoppingListActivity extends AppCompatActivity {
 
         adapter = new ShoppingListAdapter(
                 this,
-                android.R.layout.simple_list_item_1,
+                R.layout.shopping_item,
                 itemList
         );
 
