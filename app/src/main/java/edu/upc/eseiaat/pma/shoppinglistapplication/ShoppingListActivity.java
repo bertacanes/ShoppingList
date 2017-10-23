@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -163,5 +164,30 @@ public class ShoppingListActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.options, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.clear_checked:
+                clearChecked();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void clearChecked() {
+        int i = 0;
+        while (i<itemList.size()){
+            if (itemList.get(i).isChecked()){
+                itemList.remove(i);
+            }
+            else {
+                i++;
+            }
+        }
+        adapter.notifyDataSetChanged();
     }
 }
